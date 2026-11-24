@@ -1,0 +1,33 @@
+.education {
+    width: 90%;
+
+    padding-bottom: 6rem;
+
+    & h3 {
+        padding-bottom: 3rem;
+    }
+
+    & li {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.5rem;
+
+        &:not(:last-of-type) {
+            padding-bottom: 3rem;
+        }
+    }
+}
+
+.title {
+    font-weight: 700;
+}
+
+.location {
+    font-style: italic;
+}
+
+@media (width >= 48em) {
+    .education {
+        width: 65%;
+    }
+}

@@ -1,0 +1,22 @@
+.layout {
+    position: relative;
+
+    width: 100%;
+
+    .main {
+        width: 80%;
+        margin-inline: auto;
+    }
+}
+
+@media (width >= 48em) {
+    .main {
+        width: 70%;
+    }
+}
+
+@media (width >= 62em) {
+    .main {
+        width: 50%;
+    }
+}

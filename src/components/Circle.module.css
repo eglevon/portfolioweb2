@@ -1,0 +1,49 @@
+.outerCircle {
+    width: 9rem;
+    height: 9rem;
+    border-radius: 50%;
+    border: 2px solid var(--color-blue--0);
+    background-color: var(--color-blue--0);
+
+    display: grid;
+    place-items: center;
+
+    transition-duration: 0.5s;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+.innerCircle {
+    width: 7rem;
+    height: 7rem;
+
+    filter: opacity(50%);
+
+    cursor: pointer;
+
+    & img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+
+        object-fit: cover;
+    }
+
+    &:hover {
+        filter: opacity(100%);
+    }
+}
+
+@media (width >= 48em) {
+    .outerCircle {
+        width: 15rem;
+        height: 15rem;
+    }
+
+    .innerCircle {
+        width: 12rem;
+        height: 12rem;
+    }
+}

@@ -1,0 +1,49 @@
+.skills {
+    & h3 {
+        padding-bottom: 3rem;
+    }
+
+    & > ul {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 0.7rem;
+        row-gap: 2rem;
+    }
+
+    & li {
+        display: flex;
+        align-items: center;
+        column-gap: 0.5rem;
+        width: 8rem;
+    }
+
+    & img {
+        width: 1.8rem;
+    }
+}
+
+@media (width >= 36em) {
+    .skills {
+        & > ul {
+            column-gap: 1.3rem;
+            row-gap: 2.5rem;
+        }
+
+        & li {
+            width: 10rem;
+        }
+
+        & img {
+            width: 3rem;
+        }
+    }
+}
+
+@media (width >= 48em) {
+    .skills {
+        & > ul {
+            column-gap: 3rem;
+            row-gap: 4rem;
+        }
+    }
+}

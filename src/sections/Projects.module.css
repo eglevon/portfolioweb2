@@ -1,0 +1,7 @@
+.projects {
+    padding-top: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 4rem;
+}

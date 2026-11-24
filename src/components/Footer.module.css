@@ -1,0 +1,19 @@
+.footer {
+    padding-inline: 0.5rem;
+    padding-bottom: 1rem;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.date {
+    color: var(--color-dark--0);
+}
+
+@media (width >= 36em) {
+    .footer {
+        padding-inline: 1.5rem;
+    }
+}

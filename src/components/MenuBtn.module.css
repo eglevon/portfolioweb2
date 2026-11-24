@@ -1,0 +1,15 @@
+.menuBtn {
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+}
+
+.menuBtn > img {
+    width: 2rem;
+}
+
+@media (width >= 36em) {
+    .menuBtn {
+        display: none;
+    }
+}

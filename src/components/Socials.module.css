@@ -1,0 +1,21 @@
+.socials {
+    align-self: flex-end;
+
+    display: flex;
+    flex-direction: row;
+    column-gap: 1.2rem;
+
+    & > li {
+        width: 1.7rem;
+    }
+
+    & a:hover {
+        filter: brightness(0) saturate(100%) invert(100%) sepia(49%) saturate(564%) hue-rotate(172deg) brightness(84%) contrast(91%);
+    }
+}
+
+@media (width >= 36em) {
+    .socials {
+        column-gap: 2rem;
+    }
+}
