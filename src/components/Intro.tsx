@@ -1,14 +1,17 @@
+import useLanguage from '../hooks/useLanguage';
 import styles from './Intro.module.css';
 
 function Intro() {
+    const { t } = useLanguage();
+
     return (
         <div className={styles.intro}>
             <div className={styles.introText}>
-                <h3>Hello! My name is EV.</h3>
+                <h3>{t.intro.greeting}</h3>
                 <div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p>{t.intro.paragraphs[0]}</p>
 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p>{t.intro.paragraphs[1]}</p>
                 </div>
             </div>
             <div className={styles.wrapper}>

@@ -1,46 +1,42 @@
 import useDarkMode from '../hooks/useDarkMode';
+import useLanguage from '../hooks/useLanguage';
 import styles from './Work.module.css';
+
+const experience = [
+    { id: 'frontend', href: 'https://www.google.com/' },
+    { id: 'junior', href: 'https://www.google.com/' },
+] as const;
 
 function Work() {
     const { isDarkMode } = useDarkMode();
+    const { t } = useLanguage();
 
     return (
         <div className={styles.work}>
-            <h3>Work experience</h3>
+            <h3>{t.work.title}</h3>
 
-            <div className={styles.job}>
-                <p className={styles.title}>Front-End Developer</p>
-                <p className={styles.location}>Czech Republic</p>
-                <p>9/2024 – present</p>
-                <ul>
-                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                    <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae cumque nemo dolor repudiandae ea aliquam assumenda quos ipsam, consequuntur rerum reprehenderit recusandae natus consectetur voluptatibus! Non praesentium a fugiat assumenda.</li>
-                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At ullam qui suscipit molestiae impedit libero doloremque quaerat fugit placeat dolores.</li>
-                    <li>
-                        <a href='https://www.google.com/' target='_blank' className={styles.link}>
-                            The website
-                            <img src={isDarkMode ? '/arrow-right-light.svg' : '/arrow-right.svg'} alt='Preview the website' />
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            {experience.map((job) => {
+                const details = t.work.jobs[job.id];
 
-            <div className={styles.job}>
-                <p className={styles.title}>Junior Front-End Developer</p>
-                <p className={styles.location}>Czech Republic</p>
-                <p>1/2023 – 6/2023</p>
-                <ul>
-                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                    <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae cumque nemo dolor repudiandae ea aliquam assumenda quos ipsam, consequuntur rerum reprehenderit recusandae natus consectetur voluptatibus! Non praesentium a fugiat assumenda.</li>
-                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At ullam qui suscipit molestiae impedit libero doloremque quaerat fugit placeat dolores.</li>
-                    <li>
-                        <a href='https://www.google.com/' target='_blank' className={styles.link}>
-                            The website
-                            <img src={isDarkMode ? '/arrow-right-light.svg' : '/arrow-right.svg'} alt='Preview the website' />
-                        </a>
-                    </li>
-                </ul>
-            </div>
+                return (
+                    <div className={styles.job} key={job.id}>
+                        <p className={styles.title}>{details.title}</p>
+                        <p className={styles.location}>{details.location}</p>
+                        <p>{details.period}</p>
+                        <ul>
+                            {details.points.map((point) => (
+                                <li key={point}>{point}</li>
+                            ))}
+                            <li>
+                                <a href={job.href} target='_blank' className={styles.link}>
+                                    {details.website}
+                                    <img src={isDarkMode ? '/arrow-right-light.svg' : '/arrow-right.svg'} alt={details.websiteAlt} />
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                );
+            })}
         </div>
     );
 }

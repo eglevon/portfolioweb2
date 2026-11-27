@@ -1,3 +1,4 @@
+import useLanguage from '../hooks/useLanguage';
 import Skill from './Skill';
 import styles from './Skills.module.css';
 
@@ -18,9 +19,11 @@ const skills = [
 ];
 
 function Skills() {
+    const { t } = useLanguage();
+
     return (
         <div className={styles.skills}>
-            <h3>Skills</h3>
+            <h3>{t.skills.title}</h3>
             <ul>
                 {skills.map((skill) => (
                     <Skill key={skill.name} name={skill.name} img={skill.img} imgDark={skill.imgLight} />

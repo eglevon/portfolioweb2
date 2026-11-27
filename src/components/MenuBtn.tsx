@@ -1,3 +1,4 @@
+import useLanguage from '../hooks/useLanguage';
 import styles from './MenuBtn.module.css';
 
 type MenuBtnProps = {
@@ -7,9 +8,11 @@ type MenuBtnProps = {
 };
 
 function MenuBtn({ onClick, isOpen, isDarkMode }: MenuBtnProps) {
+    const { t } = useLanguage();
+
     return (
         <button type='button' onClick={onClick} className={styles.menuBtn}>
-            {isDarkMode ? <img src={isOpen ? '/xmark-light.svg' : '/bars-light.svg'} alt='Menu button' /> : <img src={isOpen ? '/xmark.svg' : '/bars.svg'} alt='Menu button' />}
+            {isDarkMode ? <img src={isOpen ? '/xmark-light.svg' : '/bars-light.svg'} alt={t.controls.menu} /> : <img src={isOpen ? '/xmark.svg' : '/bars.svg'} alt={t.controls.menu} />}
         </button>
     );
 }

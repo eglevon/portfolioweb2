@@ -1,19 +1,26 @@
+import useLanguage from '../hooks/useLanguage';
 import styles from './Education.module.css';
 
+const education = ['self', 'course'] as const;
+
 function Education() {
+    const { t } = useLanguage();
+
     return (
         <div className={styles.education}>
-            <h3>Education</h3>
+            <h3>{t.education.title}</h3>
             <ul>
-                <li>
-                    <p className={styles.title}>Self-Education in Web Development</p>
-                    <p>2021 – 2022</p>
-                </li>
-                <li>
-                    <p className={styles.title}>Lorem ipsum dolor sit amet.</p>
-                    <p>8/2019 – 7/2021</p>
-                    <p className={styles.location}>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione!</p>
-                </li>
+                {education.map((id) => {
+                    const item = t.education.items[id];
+
+                    return (
+                        <li key={id}>
+                            <p className={styles.title}>{item.title}</p>
+                            <p>{item.period}</p>
+                            {'detail' in item ? <p className={styles.location}>{item.detail}</p> : null}
+                        </li>
+                    );
+                })}
             </ul>
         </div>
     );

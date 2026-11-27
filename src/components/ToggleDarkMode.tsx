@@ -1,3 +1,4 @@
+import useLanguage from '../hooks/useLanguage';
 import styles from './ToggleDarkMode.module.css';
 
 type ToggleDarkModeProps = {
@@ -6,9 +7,11 @@ type ToggleDarkModeProps = {
 };
 
 function ToggleDarkMode({ onClick, isDarkMode }: ToggleDarkModeProps) {
+    const { t } = useLanguage();
+
     return (
         <button type='button' onClick={onClick} className={styles.button}>
-            <img src={isDarkMode ? '/sun.svg' : '/moon.svg'} alt='Dark/Light mode' />
+            <img src={isDarkMode ? '/sun.svg' : '/moon.svg'} alt={t.controls.theme} />
         </button>
     );
 }

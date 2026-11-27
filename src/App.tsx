@@ -1,10 +1,13 @@
 import Layout from './layout/Layout';
 import { DarkModeProvider } from './contexts/DarkModeContext';
+import { LanguageProvider } from './contexts/LanguageContext';
 
 function App() {
     return (
         <DarkModeProvider>
-            <Layout />
+            <LanguageProvider>
+                <Layout />
+            </LanguageProvider>
         </DarkModeProvider>
     );
 }

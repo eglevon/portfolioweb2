@@ -1,4 +1,5 @@
 import useDarkMode from '../hooks/useDarkMode';
+import useLanguage from '../hooks/useLanguage';
 import styles from './Project.module.css';
 
 type ProjectProps = {
@@ -12,6 +13,7 @@ type ProjectProps = {
 
 function Project({ title, link, img, description, tech, repo }: ProjectProps) {
     const { isDarkMode } = useDarkMode();
+    const { t } = useLanguage();
 
     return (
         <li className={styles.project}>
@@ -26,7 +28,7 @@ function Project({ title, link, img, description, tech, repo }: ProjectProps) {
                 ))}
             </ul>
             <a href={repo} target='_blank' className={styles.link}>
-                GitHub repository
+                {t.projects.repo}
                 <img src={isDarkMode ? '/arrow-right-light.svg' : '/arrow-right.svg'} />
             </a>
         </li>

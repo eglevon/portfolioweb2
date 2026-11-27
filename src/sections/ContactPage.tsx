@@ -1,29 +1,31 @@
 import Contact from '../components/Contact';
 import useDarkMode from '../hooks/useDarkMode';
+import useLanguage from '../hooks/useLanguage';
 import styles from './ContactPage.module.css';
 
 const contact = [
-    { link: 'mailto:ev@gmail.com', icon: '/envelope-icon.svg', iconLight: '/envelope-icon-light.svg', text: 'Email: ev@gmail.com' },
+    { id: 'email', link: 'mailto:ev@gmail.com', icon: '/envelope-icon.svg', iconLight: '/envelope-icon-light.svg' },
 
-    { link: 'https://www.linkedin.com/', icon: '/linkedin.svg', iconLight: '/linkedin-light.svg', text: 'LinkedIn' },
+    { id: 'linkedin', link: 'https://www.linkedin.com/', icon: '/linkedin.svg', iconLight: '/linkedin-light.svg' },
 
-    { link: 'https://github.com/', icon: '/github.svg', iconLight: '/github-light.svg', text: 'GitHub' },
-];
+    { id: 'github', link: 'https://github.com/', icon: '/github.svg', iconLight: '/github-light.svg' },
+] as const;
 
 function ContactPage() {
     const { isDarkMode } = useDarkMode();
+    const { t } = useLanguage();
 
     return (
         <div className={styles.contact}>
-            <h2>Contact</h2>
+            <h2>{t.contact.title}</h2>
             <ul>
-                {contact.map((contact) => (
-                    <Contact key={contact.text} link={contact.link} icon={contact.icon} iconLight={contact.iconLight} text={contact.text} />
+                {contact.map((item) => (
+                    <Contact key={item.id} link={item.link} icon={item.icon} iconLight={item.iconLight} text={t.contact.channels[item.id]} />
                 ))}
 
                 <li className={styles.location}>
-                    <img src={isDarkMode ? '/location-light.svg' : '/location.svg'} alt='Location' />
-                    <span>Czech Republic</span>
+                    <img src={isDarkMode ? '/location-light.svg' : '/location.svg'} alt={t.contact.locationLabel} />
+                    <span>{t.contact.location}</span>
                 </li>
             </ul>
         </div>
